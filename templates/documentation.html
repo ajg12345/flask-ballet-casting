@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+    list-item {
+    float: left;
+}
+</style>
+This is a web application which will solve many of the problems that our Ballet Masters, Casting Directors and Dancers face daily.
+</br>
+</br>
+Here are some of the important CAPABILITIES:
+<div class="list has-text-left ml-3">
+<ul>
+    <li> •  create productions </li>
+    <li> •  create rehearsals and performances of those productions</li>
+    <li> •  create castings for those rehearsals and performances </li>
+    <li> •  create locations</li>
+    <li> •  create roles and role conflicts (see restriction below)</li>
+    <li> •  view and print daily rehearsal schedule</li>
+    <li> •  create notifications of emergency recasting </li>
+    <li> •  view and select through monthly calendar menu</li>
+    <li> •  update and delete most of those things</li>
+    <li> •  copy roles, role conflicts, and castings</li>
+    <li> •  error handling</li>
+</ul>
+</div>
+
+</br>
+</br>
+
+Here are some of the observed CONSTRAINTS:
+<div class="list has-text-left ml-3">
+<ul>
+    <li> •  no dancer can be scheduled for a rehearsal over 3 hours at a time  (union stipulation)</li>
+    <li> •  no dancer can rehearse over 6 hours in a day (daily limit)</li>
+    <li> •  some roles cannot be cast by the same dancer in a performance (role conflicts)</li>
+    <li> •  casting changes must have color coded text as indicator</li>
+    <li> •  only logged in users can see this schedule</li>
+    <li> •  only priveleged users can see or use the admin menu</li>
+    <li> •  secure passwords</li>
+</ul>
+</div>
+
+
+
+{% endblock %}

@@ -1,35 +1,99 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://unpkg.com/css-doodle@0.23.1/css-doodle.min.js"></script>
-        <title>SWAC Flask</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    </head>
-        <css-doodle>
-            :doodle {
-                position: fixed;
-                z-index: -1;
-                @grid: 18 / 100vmax;
-                background: #0a0c27;
-                }
-                --hue: calc(180 + 1.5 * @row * @col);
-                background: hsl(var(--hue), 50%, 70%);
-                margin: -.5px;
-                transition: @r(2s) ease;
-                transition-delay: @rand(500ms);
-                clip-path: polygon(@pick(
-                '0 0, 100% 0, 100% 100%',
-                '0 0, 100% 0, 0 100%',
-                '0 0, 100% 100%, 0 100%',
-                '100% 0, 100% 100%, 0 100%'
-                ));    
-        </css-doodle>        
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/css-doodle@0.23.1/css-doodle.min.js"></script>
+    <title>Ballet Casting</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+    <css-doodle>
+        :doodle {
+            position: fixed;
+            z-index: -1;
+            @grid: 18 / 100vmax;
+            background: #0a0c27;
+            }
+            --hue: calc(180 + 1.5 * @row * @col);
+            background: hsl(var(--hue), 50%, 70%);
+            margin: -.5px;
+            transition: @r(2s) ease;
+            transition-delay: @rand(500ms);
+            clip-path: polygon(@pick(
+            '0 0, 100% 0, 100% 100%',
+            '0 0, 100% 0, 0 100%',
+            '0 0, 100% 100%, 0 100%',
+            '100% 0, 100% 100%, 0 100%'
+            ));    
+    </css-doodle>        
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{{ url_for('index') }}">
+            <img src="{{url_for('static', filename='castingimage.png')}}" width="150" height="100">
+            </a>
+        
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            </a>
+        </div>
+        
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+            <a class="navbar-item" href="{{ url_for('index') }}">
+                Home
+            </a>
+        
+            <a class="navbar-item" href="{{ url_for('documentation') }}">
+                Documentation
+            </a>
+            
+            <a class="navbar-item">
+                Dancers
+            </a>
+
+            <a class="navbar-item">
+                Productions
+            </a>
+            <a class="navbar-item">
+                Performances
+            </a>
+            <a class="navbar-item">
+                Rehearsals
+            </a>
+            <a class="navbar-item">
+                Roles
+            </a>
+            <a class="navbar-item">
+                Conflicts
+            </a>
+            <a class="navbar-item">
+                Locations
+            </a>
+            
+            
+            </div>
+        
+            <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                <a class="button is-primary">
+                    <strong>Sign up</strong>
+                </a>
+                <a class="button is-light">
+                    Log in
+                </a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </nav>
     <body>
         <div class="columns">
         <div class="column"> </div>
         
-        <div class="mt-6 p-6 column is-three-fifths ">
+        <div class="mt-3 p-3 column is-three-fifths ">
             <div class="box has-background-dark has-text-white-bis has-text-centered">
                 {% block content %}
                 {% endblock %}
