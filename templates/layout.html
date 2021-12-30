@@ -5,7 +5,7 @@
     <script src="https://unpkg.com/css-doodle@0.23.1/css-doodle.min.js"></script>
     <title>Ballet Casting</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='static/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
 </head>
     <css-doodle>
         :doodle {
@@ -29,7 +29,7 @@
     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="{{ url_for('index') }}">
-            <img src="{{url_for('static', filename='static/castingimage.png')}}" width="150" height="100">
+            <img src="{{url_for('static', filename='img/castingimage.png')}}" width="150" height="100">
             </a>
         
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
