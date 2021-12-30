@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://unpkg.com/css-doodle@0.23.1/css-doodle.min.js"></script>
+        <title>Gothons Of Planet Percal #25</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    </head>
+        <css-doodle>
+            :doodle {
+                position: fixed;
+                z-index: -1;
+                @grid: 18 / 100vmax;
+                background: #0a0c27;
+                }
+                --hue: calc(180 + 1.5 * @row * @col);
+                background: hsl(var(--hue), 50%, 70%);
+                margin: -.5px;
+                transition: @r(2s) ease;
+                transition-delay: @rand(500ms);
+                clip-path: polygon(@pick(
+                '0 0, 100% 0, 100% 100%',
+                '0 0, 100% 0, 0 100%',
+                '0 0, 100% 100%, 0 100%',
+                '100% 0, 100% 100%, 0 100%'
+                ));    
+        </css-doodle>        
+    <body>
+        <div class="columns">
+        <div class="column"> </div>
+        
+        <div class="mt-6 p-6 column is-three-fifths ">
+            <div class="box has-background-dark has-text-white-bis has-text-centered">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        
+        <div class="column"> </div>
+        </div>            
+        
+    </body>
+    </html>
