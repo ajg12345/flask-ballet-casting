@@ -1,2 +1,5 @@
 deployed to amazon ec2 using this guide on medium:
 https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04
+
+how to start up the mysql server on ubuntu EC2 machine:
+https://usefulangle.com/post/96/aws-ec2-install-linux-apache-mysql-php-phpmyadmin-lamp-stack-ubuntu-18-04
