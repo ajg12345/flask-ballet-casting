@@ -1,12 +1,10 @@
 from flask import Flask, render_template
+from database import db
 
 app = Flask(__name__)
 
-headings = ["Room", "Building", "location_id"]
-rows = [   ["Main Stage", "Auditorium Theatre", "1"],
-            ["Studio A", "Joffrey Tower", "2"],
-            
-]
+ballet_data = db.localdb()
+headings, rows = ballet_data.get_locations()
     
 
 @app.route('/', methods=['POST', 'GET'])
@@ -24,4 +22,6 @@ def locations():
     
 
 if __name__ == "__main__":
+    
+
     app.run()
