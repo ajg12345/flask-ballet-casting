@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<table class="table is-striped is-bordered is-fullwidth">
+    <thead>
+        <tr class='is-selected'>
+            {% for header in headings %}
+            <th>{{ header }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in rows %}
+        <tr>
+            {% for cell in row %}
+            <td>{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+{% endblock %}

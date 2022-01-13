@@ -1,63 +1,62 @@
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="{{ url_for('index') }}">
-        <img src="{{url_for('static', filename='img/castingimage.png')}}" width="150" height="100">
-        </a>
-    
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        </a>
-    </div>
-    
-    <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-        <a class="navbar-item" href="{{ url_for('index') }}">
-            Home
-        </a>
-    
-        <a class="navbar-item" href="{{ url_for('documentation') }}">
-            Documentation
-        </a>
-        
-        <a class="navbar-item">
-            Dancers
+            <img src="{{url_for('static', filename='img/castingimage.png')}}" width="150" height="100">
         </a>
 
-        <a class="navbar-item">
-            Productions
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
         </a>
-        <a class="navbar-item">
-            Performances
-        </a>
-        <a class="navbar-item">
-            Rehearsals
-        </a>
-        <a class="navbar-item">
-            Roles
-        </a>
-        <a class="navbar-item">
-            Conflicts
-        </a>
-        <a class="navbar-item">
-            Locations
-        </a>
-        
-        
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="{{ url_for('index') }}">
+                Home
+            </a>
+
+            <a class="navbar-item" href="{{ url_for('documentation') }}">
+                Documentation
+            </a>
+
+            <a class="navbar-item">
+                Dancers
+            </a>
+
+            <a class="navbar-item">
+                Productions
+            </a>
+            <a class="navbar-item">
+                Performances
+            </a>
+            <a class="navbar-item">
+                Rehearsals
+            </a>
+            <a class="navbar-item">
+                Roles
+            </a>
+            <a class="navbar-item">
+                Conflicts
+            </a>
+            <a class="navbar-item" href="{{ url_for('locations') }}">
+                Locations
+            </a>
+
         </div>
-    
+
         <div class="navbar-end">
-        <div class="navbar-item">
-            <div class="buttons">
-            <a class="button is-primary">
-                <strong>Sign up</strong>
-            </a>
-            <a class="button is-light">
-                Log in
-            </a>
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary">
+                        <strong>Sign up</strong>
+                    </a>
+                    <a class="button is-light">
+                        Log in
+                    </a>
+                </div>
             </div>
-        </div>
         </div>
     </div>
 </nav>
