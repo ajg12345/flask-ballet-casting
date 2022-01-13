@@ -4,9 +4,6 @@ from database import db
 app = Flask(__name__)
 
 ballet_data = db.localdb()
-headings, rows = ballet_data.get_locations()
-    
-
 @app.route('/', methods=['POST', 'GET'])
 def index():
     return render_template("index.html")
@@ -18,6 +15,7 @@ def documentation():
 
 @app.route('/locations', methods=['POST', 'GET'])
 def locations():
+    headings, rows = ballet_data.get_locations()
     return render_template("table.html", headings=headings, rows=rows)
     
 
