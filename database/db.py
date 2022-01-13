@@ -6,6 +6,7 @@ class localdb():
         self.engine = None
         try:
             self.engine = create_engine('mysql+pymysql://root:root@localhost:3307/flaskballetcasting')
+            self.engine.connect() 
         except Exception as e: 
             print('not running in local development environment, so using other server name')
             self.engine = create_engine('mysql+pymysql://root:root@127.0.0.1:3306/flaskballetcasting')
