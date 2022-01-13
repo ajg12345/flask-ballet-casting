@@ -7,8 +7,8 @@ class localdb():
         try:
             self.engine = create_engine('mysql+pymysql://root:root@localhost:3307/flaskballetcasting')
         except Exception as e: 
-            self.engine = create_engine('mysql+pymysql://root:root@localhost:3306/flaskballetcasting')
-            print('could not connect to localhost database because bad port' + str(e))
+            print('not running in local development environment, so using other server name')
+            self.engine = create_engine('mysql+pymysql://root:root@127.0.0.1:3306/flaskballetcasting')
 
     def get_locations(self) -> tuple:
         """

@@ -38,4 +38,4 @@ class localdb():
         return columns, rows
 
 
-code.interact(local=locals)
+#code.interact(local=locals)
