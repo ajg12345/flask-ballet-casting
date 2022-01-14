@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<form action="{{ url_for('locationscreate') }}" method="POST">
+    {% for header in headings %}
+    <div class="field">
+        <label class="label.is-white">{{header}}</label>
+        <input class="input" type="text" name={{ header }}>
+    </div>
+    {% endfor %}
+
+    <div class="control">
+        <button class="button is-primary">
+            <input type="submit" value="Create">
+        </button>
+    </div>
+</form>
+
+
+
+
+{% endblock %}

@@ -1,4 +1,5 @@
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, text, insert
+
 
 
 class localdb():
@@ -20,6 +21,14 @@ class localdb():
             column_table = conn.execute(text(f"show columns in {tablename};")) 
             columns = [i[0] for i in column_table] 
         return columns, rows
+
+    def create_location(self, room, building):
+        """
+        Create a location in the table, automatically creating a primary key.
+        """
+        with self.engine.connect() as conn:
+            conn.execute(text(f"insert into flaskballetcasting.locations (room, building, is_active) VALUES('{room}', '{building}', 1);"))
+            
 
     def get_performances(self) -> tuple:
 

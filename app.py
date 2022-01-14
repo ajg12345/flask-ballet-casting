@@ -1,23 +1,34 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from database import db
 
 app = Flask(__name__)
 
 ballet_data = db.localdb()
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/', methods=['GET'])
 def index():
     return render_template("index.html")
-    
 
-@app.route('/documentation', methods=['POST', 'GET'])
+@app.route('/documentation', methods=['GET'])
 def documentation():
     return render_template("documentation.html")
 
-@app.route('/locations', methods=['POST', 'GET'])
-def locations():
-    headings, rows = ballet_data.get_table('locations')
-    return render_template("table.html", headings=headings, rows=rows)
+@app.route('/locations/create', methods=['POST', 'GET'])
+def locationscreate():
+    if request.method == 'GET':
+        headings = ['room','building']
+        return render_template("locations_create.html", headings=headings,)
+    if request.method == 'POST':
+        room = request.form['room']
+        building = request.form['building']
+        ballet_data.create_location(room, building)
+        return redirect('/locations')
 
+@app.route('/locations', methods=['GET'])
+def locations():
+    if request.method == 'GET':
+        headings, rows = ballet_data.get_table('locations')
+        return render_template("table.html", headings=headings, rows=rows)
+    
 @app.route('/dancers', methods=['POST', 'GET'])
 def dancers():
     headings, rows = ballet_data.get_table('dancers')
