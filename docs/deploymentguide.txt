@@ -3,3 +3,8 @@ https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications
 
 how to start up the mysql server on ubuntu EC2 machine:
 https://usefulangle.com/post/96/aws-ec2-install-linux-apache-mysql-php-phpmyadmin-lamp-stack-ubuntu-18-04
+
+once deployed on an ubuntu machine with a mysql instance, in order to start and stop the service 
+(because you may be doing this a lot during development) use:
+sudo systemctl stop flask-ballet-casting
+sudo systemctl start flask-ballet-casting
