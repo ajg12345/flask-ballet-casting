@@ -67,4 +67,4 @@ def role_conflicts():
     return render_template("table.html", headings=headings, rows=rows)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
