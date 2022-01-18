@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect
-from models import db, locations, dancers, productions, rehearsals, roles, users, role_conflicts, castings
+from models import db, locations, dancers, productions, rehearsals, roles, role_conflicts, castings
 from os import path
 from sqlalchemy.orm import aliased
 
@@ -37,23 +37,23 @@ def locations_page():
     if request.method == 'GET':
         columns_to_select = [locations.room, locations.building]
         rows = locations.query.with_entities(*columns_to_select)
-        return render_template("table.html", headings=columns_to_select, rows=rows)
+        return render_template("table.html", headings=columns_to_select, rows=rows, title='locations')
     
-@app.route('/dancers', methods=['POST', 'GET'])
+@app.route('/dancers', methods=['GET'])
 def dancers_page():
     columns_to_select = [dancers.dancer_id, dancers.dancer_fullname, 
                         dancers.dancer_email, dancers.dancer_phone, 
                         dancers.dancer_email_or_phone]
     rows = dancers.query.with_entities(*columns_to_select)
-    return render_template("table.html", headings=columns_to_select, rows=rows)
+    return render_template("table.html", headings=columns_to_select, rows=rows, title='dancers')
     
-@app.route('/productions', methods=['POST', 'GET'])
+@app.route('/productions', methods=['GET'])
 def productions_page():
     columns_to_select = [productions.prod_id, productions.description]
     rows = productions.query.with_entities(*columns_to_select)
-    return render_template("table.html", headings=columns_to_select, rows=rows)
+    return render_template("table.html", headings=columns_to_select, rows=rows, title='productions')
 
-@app.route('/performances', methods=['POST', 'GET'])
+@app.route('/performances', methods=['GET'])
 def performances_page():
     columns_to_select = [rehearsals.re_id, productions.description, 
                         rehearsals.perf_dt, rehearsals.start_time,
@@ -67,9 +67,9 @@ def performances_page():
         .filter(rehearsals.is_performance == 1)\
         .filter(productions.is_active == 1)\
         .with_entities(*columns_to_select)
-    return render_template("table.html", headings=headings, rows=rows)
+    return render_template("table.html", headings=headings, rows=rows, title='performances')
 
-@app.route('/rehearsals', methods=['POST', 'GET'])
+@app.route('/rehearsals', methods=['GET'])
 def rehearsals_page():
     columns_to_select = [rehearsals.re_id, productions.description, 
                         rehearsals.perf_dt, rehearsals.start_time,
@@ -80,17 +80,17 @@ def rehearsals_page():
         .filter(rehearsals.is_performance == 0)\
         .filter(productions.is_active == 1)\
         .with_entities(*columns_to_select)
-    return render_template("table.html", headings=columns_to_select, rows=rows)
+    return render_template("table.html", headings=columns_to_select, rows=rows, title='rehearsals')
 
-@app.route('/roles', methods=['POST', 'GET'])
+@app.route('/roles', methods=['GET'])
 def roles_page():
     columns_to_select = [roles.role_id, productions.description, roles.description, roles.role_count]
     rows = roles.query\
         .join(productions, productions.prod_id == roles.prod_id)\
         .with_entities(*columns_to_select)
-    return render_template("table.html", headings=columns_to_select, rows=rows)
+    return render_template("table.html", headings=columns_to_select, rows=rows, title='roles')
 
-@app.route('/castings', methods=['POST', 'GET'])
+@app.route('/castings', methods=['GET'])
 def castings_page():
     columns_to_select = [castings.casting_id, roles.description, 
                         productions.description, rehearsals.start_time,
@@ -109,9 +109,9 @@ def castings_page():
         .filter(productions.is_active == 1)\
         .filter(dancers.is_active == 1)\
         .with_entities(*columns_to_select)
-    return render_template("table.html", headings=columns, rows=rows)
+    return render_template("table.html", headings=columns, rows=rows, title='castings')
 
-@app.route('/role_conflicts', methods=['POST', 'GET'])
+@app.route('/role_conflicts', methods=['GET'])
 def role_conflicts_page():
     roles2 = aliased(roles)            
     columns_to_select = [role_conflicts.conflict_id, productions.description, 
@@ -125,7 +125,7 @@ def role_conflicts_page():
         .join(roles2, role_conflicts.role_id2 == roles2.role_id)\
         .filter(productions.is_active == 1)\
         .with_entities(*columns_to_select)
-    return render_template("table.html", headings=columns, rows=rows)
+    return render_template("table.html", headings=columns, rows=rows, title='role conflicts')
 
 if __name__ == "__main__":
     app.run()
